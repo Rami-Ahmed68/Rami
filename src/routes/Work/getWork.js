@@ -9,7 +9,7 @@ router.get("/" , async (req , res , next) => {
     try {
 
         const Schema = Joi.object().keys({
-            workId : Joi.string().require()
+            workId : Joi.string().required()
         });
 
         // valiadte body data using the Schema
