@@ -21,7 +21,7 @@ router.get("/" , async (req , res , next) => {
         }
 
         // find the work
-        const work = await Work.findById(req.query.workId);
+        const work = await Work.findById(req.body.workId);
 
         // check if the work id exists
         if (!work) {
