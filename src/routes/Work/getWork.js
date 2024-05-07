@@ -17,7 +17,7 @@ router.get("/" , async (req , res , next) => {
 
         // check if the body data has any problem
         if (Error.error) {
-            return nexy(new ApiErrors(Error.error , 400));
+            return next(new ApiErrors(Error.error , 400));
         }
 
         // find the work
