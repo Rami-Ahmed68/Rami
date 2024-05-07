@@ -5,11 +5,8 @@ const Joi = require("joi");
 const ApiErrors = require("../../utils/apiError");
 const Work = require("../../models/Work/work");
 
-router.get("/:workId" , async (req , res , next) => {
+router.get("/" , async (req , res , next) => {
     try {
-
-        // catch the work idfrom params
-        const workId = req.params.workId; 
 
         // create Schema to validate body data
         const Schema = Joi.object().keys({
@@ -17,7 +14,7 @@ router.get("/:workId" , async (req , res , next) => {
         });
         
         // valiadte body data using the Schema
-        const Error = Schema.validate({ workId });
+        const Error = Schema.validate(req.query);
 
         // check if the body data has any problem
         if (Error.error) {
