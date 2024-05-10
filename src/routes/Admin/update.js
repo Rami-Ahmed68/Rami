@@ -6,6 +6,7 @@ const _ = require("lodash");
 const ApiErrors = require("../../utils/apiError");
 const Admin = require("../../models/Admin/admin");
 const Hashing = require("../../utils/hashingPassword");
+const GenerateToken = require("../../utils/generatToken");
 
 router.put("/" , async (req , res , next) => {
 
@@ -48,10 +49,13 @@ router.put("/" , async (req , res , next) => {
             }
         } , { new : true });
 
+        // generate token
+        const token = GenerateToken(admin._id , admin.email);
+        
         // create a result
         const result = {
-            "message" : "Admin data updated successfully",
-            "admin" : _.pick(up , ['_id' , 'name' , 'email'])
+            "admin" : _.pick(admin , ['_id' , 'name' , 'email']),
+            "token" : token
         }
 
         // send the result to user
