@@ -74,6 +74,11 @@ app.use("/skill/up" , UpdateSkill);
 app.use("/skill/delete" , DeleteSkill);
 // create a Skill api's
 
+// send the use to the index.html page in front end section to handling the ( router )
+app.get('*', (req, res) => {
+    res.redirect('https://rami-web.onrender.com/');
+});
+
 // handling api's
 app.all("*" , (req , res , next) => {
     return next(new ApiErrors("Api Not Found ..." , 404));
