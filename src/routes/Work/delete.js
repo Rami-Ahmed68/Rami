@@ -42,7 +42,7 @@ router.delete("/" , async (req , res , next) => {
         }
 
         // find the work 
-        const work = await Worker.findById(req.body.workId);
+        const work = await Work.findById(req.body.workId);
 
         // check if the work is exists
         if (!work) {
