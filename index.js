@@ -14,6 +14,9 @@ const corsOptions = {
 // use the cors options
 app.use(cors(corsOptions));
 
+app.get("/test" , (req , res) => {
+    res.send("result test")
+})
 
 const Global = require("./src/middleware/globalError");
 const ApiErrors = require("./src/utils/apiError");
